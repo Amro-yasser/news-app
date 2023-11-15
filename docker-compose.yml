@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  newsapp-dev-db:
+    container_name: newsapp-dev-db
+    image: postgres:14.5
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysupersecretpassword
+    shm_size: '2gb'
+    volumes:
+      - newsapp-dev-postgres-data:/var/lib/postgresql/data
+  newsapp-dev-api:
+    container_name: newsapp-dev-api
+    environment:
+      - ENV=dev
+      - DEBUG=True
+      - DB=newsapp-dev-db
+      - PASSWORD=mysupersecretpassword
+      - HOST=http://localhost:4200
+      - API_KEY=c7188c510e79460facf4ac63dee104d3
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - newsapp-dev-db
+volumes:
+  newsapp-dev-postgres-data:

@@ -1,0 +1,63 @@
+server {
+    server_name www.newsapp.com newsapp.com;
+    return 301 https://newsapp.com$request_uri;
+    listen 80;
+}
+
+
+
+
+server {
+	listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+	server_name newsapp.com;
+	client_max_body_size 500M;
+
+	location / {
+		
+		proxy_pass http://127.0.0.1:4100;
+		proxy_set_header X-Forwarded-Host $server_name;
+		proxy_set_header Host            $host;
+		proxy_set_header X-Forwarded-For $remote_addr;
+		proxy_set_header X-Forwarded-Proto "https";
+		proxy_set_header X-Real-IP $remote_addr;
+		add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+        
+	}
+	location /api/ {
+		
+		proxy_pass http://127.0.0.1:4101;
+		proxy_set_header X-Forwarded-Host $server_name;
+		proxy_set_header X-Real-IP $remote_addr;
+		add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+        
+	}
+
+
+	location /admin/ {
+		proxy_pass http://127.0.0.1:4101;
+		proxy_set_header X-Forwarded-Host $server_name;
+		proxy_set_header X-Real-IP $remote_addr;
+		add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+
+	}
+
+	
+	location /static {
+		alias ;
+		
+	}
+
+
+	location /media {
+		alias ;
+		
+	}
+
+	ssl_certificate 
+    ssl_certificate_key
+    include 
+    ssl_dhparam 
+
+}
+

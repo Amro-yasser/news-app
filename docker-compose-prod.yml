@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  newsapp-prod-db:
+    container_name: newsapp-prod-db
+    image: postgres:14.5
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=~"Mzr^*41`p0a<500*
+    shm_size: '2gb'
+    volumes:
+      - newsapp-prod-postgres-data:/var/lib/postgresql/data
+  newsapp-prod-api:
+    container_name: newsapp-prod-api
+    environment:
+      - ENV=prod
+      - DEBUG=False
+      - DB=newsapp-prod-db
+      - PASSWORD=~"Mzr^*41`p0a<500*
+      - HOST=https://newsapp.com
+      - API_KEY=KEY_FOR_NEWSAPI_FOR_PRODUCTION
+    build: .
+    command: gunicorn -b 0.0.0.0:4101 app.wsgi:application --workers=1 --timeout=30
+    volumes:
+      - .:/code
+    ports:
+      - "4101:4101"
+    depends_on:
+      - newsapp-prod-db
+volumes:
+  newsapp-prod-postgres-data:
