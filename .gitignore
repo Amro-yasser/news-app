@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# vs code configuration folder
+.vscode
+
+# Django logs and debug files:
+*.log
+
+# Frontend settings
+/static
+/media/user-media
+
+debug.log
+
