@@ -11,15 +11,18 @@ def get_top_headlines(query,language,country,category):
     return top_headlines
 
 # /v2/everything
-def get_news(query,language,from_param,sort_by):
+def get_news(query,language='en'):
     today = datetime.date.today()
-    # convert today into str
+    seven_days_before = today - datetime.timedelta(days=7)
+
     today = today.strftime("%Y-%m-%d")
+    seven_days_before = seven_days_before.strftime("%Y-%m-%d")
+
     all_articles = newsapi.get_everything(q=query,
-                                      from_param=from_param,
+                                      from_param=seven_days_before,
                                       to=today  ,
                                       language=language,
-                                      sort_by=sort_by,
+                                      sort_by='publishedAt',
                                       )
     return all_articles
 

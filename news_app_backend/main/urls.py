@@ -10,7 +10,9 @@ urlpatterns = [
 
     
     #api
-    path('api/dashboard/','dashboard',name='dashboard'),
+    path('api/news', NewsListView.as_view(), name='news_list'),
+
+
     
 
 
