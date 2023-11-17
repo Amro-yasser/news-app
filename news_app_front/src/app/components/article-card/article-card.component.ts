@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-article-card',
   templateUrl: './article-card.component.html',
@@ -8,8 +8,14 @@ import { Component, Input } from '@angular/core';
 export class ArticleCardComponent {
   @Input() article: any;
 
-  // function too open link in a new tab
-  redFullArticle(link: string) {
+  constructor(private datePipe: DatePipe) { }
+  
+  redirectToArticle(link: string) {
     window.open(link, '_blank');
+  }
+
+  get humanizeDate() {
+    const date = new Date(this.article.publishedAt);
+    return this.datePipe.transform(date, 'MMM dd, yyyy'); 
   }
 }

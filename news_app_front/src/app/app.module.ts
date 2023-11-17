@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,9 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
     MatButtonModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
