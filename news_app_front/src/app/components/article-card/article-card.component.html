@@ -1,5 +1,5 @@
 <mat-card class="article-card cursor-pointer h-100" (click)="redirectToArticle(article.url)">
-  <img height="200" mat-card-image [src]="article.urlToImage" [alt]="article.title">
+  <img height="200" mat-card-image [src]="article?.urlToImage || 'assets/images/img-failed.png'" (error)="imageLoadError($event)" [alt]="article.title" >
   <mat-card-header class="">
     <mat-card-title>{{article.title}}</mat-card-title>
     <mat-card-subtitle>{{humanizeDate}}</mat-card-subtitle>

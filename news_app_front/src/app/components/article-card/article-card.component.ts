@@ -18,4 +18,8 @@ export class ArticleCardComponent {
     const date = new Date(this.article.publishedAt);
     return this.datePipe.transform(date, 'MMM dd, yyyy'); 
   }
+
+  imageLoadError(event: any) {
+    event.target.src = 'assets/images/img-failed.png';
+  }
 }
