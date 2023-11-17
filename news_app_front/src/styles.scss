@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import './assets/style.bundle.css';
 html, body { height: 100%; }
 body {
     font-family:
@@ -18,5 +18,6 @@ body {
       'Segoe UI Symbol',
       'Noto Color Emoji' !important;
     letter-spacing: -0.025em;
+    background: #f5f8fa!important;
   }
   
