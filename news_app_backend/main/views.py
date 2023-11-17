@@ -6,8 +6,10 @@ from .utils import get_news, get_top_headlines
 from django.views import View
 
 class NewsListView(ListAPIView):
+     
      def get_queryset(self):
         return [] 
+     
      def list(self, request, *args, **kwargs):
 
         query = self.request.GET.get("q", "")
