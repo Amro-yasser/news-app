@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-center">
+        <form ngNativeValidate (submit)="onsubmit()" class="search-form">
+            <mat-form-field  appearance="outline">
+            <mat-label>Type a word</mat-label>
+            <input [(ngModel)]="query" name="query" type="search" matInput #input placeholder="Ex. Apple, Netflix, Microsoft">
+            </mat-form-field>
+        
+            <mat-form-field appearance="outline">
+            <mat-label>Select Language</mat-label>
+            <mat-select [(value)]="selectedLanguage">
+                <mat-option *ngFor="let language of languages" [value]="language.code" name="language">{{language.label}}</mat-option>
+            </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Select Theme</mat-label>
+                <mat-select [(value)]="selectedTheme">
+                <mat-option  *ngFor="let theme of themes" [value]="theme" name="theme">{{theme}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button class="search-submit-btn" type="submit" mat-flat-button color="primary">Search</button>
+        </form>
+    </div>
+
+
+    <div class="row">
+
+            <div *ngFor="let article of articles" class="col-lg-3 px-1 ps-sm-2 col-md-3 col-sm-6 col-12 my-3">
+                <app-article-card [article]="article" ></app-article-card>
+            </div>
+                    
+    </div>
+</div>
+
