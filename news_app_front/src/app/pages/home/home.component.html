@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-center">
-        <form ngNativeValidate (submit)="onsubmit()" class="search-form">
+        <form ngNativeValidate (submit)="getArticles()" class="search-form">
             <mat-form-field  appearance="outline">
             <mat-label>Type a word</mat-label>
             <input [(ngModel)]="query" name="query" type="search" matInput #input placeholder="Ex. Apple, Netflix, Microsoft" required>
@@ -23,9 +23,9 @@
     </div>
 
 
-    <app-spinner *ngIf="loading"></app-spinner>
+    
    
-    <div *ngIf="articles.length === 0" class="mt-10 text-center mt-6 text-center  pb-4 px-4 pt-2">
+    <div *ngIf="articles.length === 0 && !loading" class="mt-10 text-center mt-6 text-center  pb-4 px-4 pt-2">
         <img class="mt-5" src="assets/images/paper.png" alt="news" height="72" width="72" class="d-block mb-3 mx-auto" >
         <h1 class="mt-5 fs-1 fw-bold text-center text-success" >Empower Your Understanding: Uncover the World's Stories </h1>
 
@@ -78,11 +78,19 @@
      </div>
 
 
-    <div class="row">
+    <div 
+        class="row" 
+        id="results" 
+        (scrolled)="nextPage()"
+            infiniteScroll
+            [infiniteScrollDistance]="1"
+            [infiniteScrollThrottle]="2000"
+        >
         <div *ngFor="let article of articles" class="col-lg-3 px-1 ps-sm-2 col-md-3 col-sm-6 col-12 my-3">
             <app-article-card [article]="article" ></app-article-card>
         </div>
                     
     </div>
+    <app-spinner *ngIf="loading"></app-spinner>
 </div>
 

@@ -27,22 +27,43 @@ export class HomeComponent {
   selectedTheme: any = ''
   selectedLanguage: any = '' 
   articles: any[] = []
-
+  page: number = 1
   constructor(
     private newsService: NewsService
     ) {}
 
-  onsubmit(){
+  getArticles(){
     this.loading = true
+    console.log('scrolling',this.page)
+
     let params = {
       q:this.query,
-      language:this.selectedLanguage
+      language:this.selectedLanguage,
+      page:this.page,
     }
-    console.log(params)
+
+    if(this.articles.length === 0 ){
+      this.page = 1
+    }
+
     this.newsService.retrieveObjects(params).subscribe((data:any)=>{
-      this.articles = data
-      console.log(this.articles)
+      if(this.articles.length === 0){
+        this.articles = data
+
+      }else{
+
+        this.articles = this.articles.concat(data)
+      }
+    }).add(()=>{
+
       this.loading = false
+
     })
+  }
+
+  nextPage(){
+    console.log('next page')
+    this.page += 1
+    this.getArticles()
   }
 }

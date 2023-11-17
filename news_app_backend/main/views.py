@@ -13,10 +13,10 @@ class NewsListView(ListAPIView):
      def list(self, request, *args, **kwargs):
 
         query = self.request.GET.get("q", "")
-        language = self.request.GET.get("language", "")
-
+        language = self.request.GET.get("language", "en")
+        page = int(self.request.GET.get("page", ""))
         
-        response = get_news(query)
+        response = get_news(query, language, page)
     
         if response.get('status') == 'ok':
             return Response(response.get("articles", []))

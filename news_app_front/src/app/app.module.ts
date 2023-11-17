@@ -18,6 +18,8 @@ import { ArticleCardComponent } from './components/article-card/article-card.com
 import { DatePipe } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    InfiniteScrollModule
   ],
   providers: [
     DatePipe

@@ -11,7 +11,7 @@ def get_top_headlines(query,language,country,category):
     return top_headlines
 
 # /v2/everything
-def get_news(query,language='en'):
+def get_news(query,language='en',page=1):
     today = datetime.date.today()
     seven_days_before = today - datetime.timedelta(days=7)
 
@@ -23,6 +23,7 @@ def get_news(query,language='en'):
                                       to=today  ,
                                       language=language,
                                       sort_by='publishedAt',
+                                      page=page
                                       )
     return all_articles
 
