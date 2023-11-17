@@ -38,7 +38,7 @@ export class BackendService {
   }
 
   retrieveObjects(params = {}) {
-    const url = this.apiEndpoint + this.modelName + '/';
+    const url = this.apiEndpoint + this.modelName ;
     return this.httpClient.get(url, { params, withCredentials: true });
   }
 
