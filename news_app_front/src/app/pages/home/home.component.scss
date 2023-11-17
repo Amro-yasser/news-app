@@ -31,3 +31,8 @@
   ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
     border-radius: 0px !important;
   }
+
+  .mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-container-color: #00B2FF !important;
+    --mdc-filled-button-label-text-color: #fff;
+}

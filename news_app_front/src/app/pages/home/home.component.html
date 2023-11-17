@@ -3,7 +3,7 @@
         <form ngNativeValidate (submit)="onsubmit()" class="search-form">
             <mat-form-field  appearance="outline">
             <mat-label>Type a word</mat-label>
-            <input [(ngModel)]="query" name="query" type="search" matInput #input placeholder="Ex. Apple, Netflix, Microsoft">
+            <input [(ngModel)]="query" name="query" type="search" matInput #input placeholder="Ex. Apple, Netflix, Microsoft" required>
             </mat-form-field>
         
             <mat-form-field appearance="outline">
@@ -23,11 +23,64 @@
     </div>
 
 
-    <div class="row">
+   
+    <div *ngIf="articles.length === 0" class="mt-10 text-center mt-6 text-center  pb-4 px-4 pt-2">
+        <img class="mt-5" src="assets/images/paper.png" alt="news" height="72" width="72" class="d-block mb-3 mx-auto" >
+        <h1 class="mt-5 fs-1 fw-bold text-center text-success" >Empower Your Understanding: Uncover the World's Stories </h1>
 
-            <div *ngFor="let article of articles" class="col-lg-3 px-1 ps-sm-2 col-md-3 col-sm-6 col-12 my-3">
-                <app-article-card [article]="article" ></app-article-card>
-            </div>
+        <p class="text-center fs-3 mb-6 text-gray-600">
+            Search for news articles from over 30,000 news sources and blogs
+        </p>
+        <div class="row text-center mt-5">
+           
+           <div class="col-lg-4">
+              <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                 <div class="">
+                    <p class="text-center"><img width="64px" height="64px" alt="inspirassion features" src="assets/images/feat2.png" />
+                    </p>
+                 </div>
+                 <h5 class="fs-4 fw-bold text-gray-800">Topic Variety</h5>
+                 <p class="mb-0 fs-4 text-gray-600">
+                    Discover the world's stories at your fingertips with our curated news platform.
+                    
+                 </p>
+              </div>
+           </div>
+           
+           <div class="col-lg-4">
+              <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                 <div class="">
+                    <p class="text-center"><img width="64px" height="64px" alt="inspirassion features" src="assets/images/feat1.png" />
+                    </p>
+                 </div>
+                 <h5 class="fs-4 fw-bold text-gray-800">Instant Updates</h5>
+                 <p class="mb-0 fs-4 text-gray-600">
+                    Stay informed, stay inspired – where every headline tells a story
+                 </p>
+              </div>
+           </div>
+           
+           <div class="col-lg-4">
+              <div class="mx-auto mb-5 mb-lg-0 mb-lg-3">
+                 <div class="">
+                    <p class="text-center"><img width="64px" height="64px" alt="inspirassion features" src="assets/images/feat3.png" />
+                    </p>
+                 </div>
+                 <h5 class="fs-4 fw-bold text-gray-800">Personalized Experience</h5>
+                 <p class="mb-0 fs-4 text-gray-600">
+                    Elevate your news experience with personalized updates that matter to you
+                 </p>
+              </div>
+           </div>
+           
+        </div>
+     </div>
+
+
+    <div class="row">
+        <div *ngFor="let article of articles" class="col-lg-3 px-1 ps-sm-2 col-md-3 col-sm-6 col-12 my-3">
+            <app-article-card [article]="article" ></app-article-card>
+        </div>
                     
     </div>
 </div>
