@@ -8,6 +8,7 @@ import { NewsService } from 'src/app/services/news.service';
   
 })
 export class HomeComponent {
+  loading: boolean = false
   languages: { label: string; code: string }[] = [
       {label:'English',code:'en'},
       { label:'Arabic', code:'ar'}
@@ -32,7 +33,7 @@ export class HomeComponent {
     ) {}
 
   onsubmit(){
-
+    this.loading = true
     let params = {
       q:this.query,
       language:this.selectedLanguage
@@ -41,6 +42,7 @@ export class HomeComponent {
     this.newsService.retrieveObjects(params).subscribe((data:any)=>{
       this.articles = data
       console.log(this.articles)
+      this.loading = false
     })
   }
 }

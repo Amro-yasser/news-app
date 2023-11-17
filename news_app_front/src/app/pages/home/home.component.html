@@ -23,6 +23,7 @@
     </div>
 
 
+    <app-spinner *ngIf="loading"></app-spinner>
    
     <div *ngIf="articles.length === 0" class="mt-10 text-center mt-6 text-center  pb-4 px-4 pt-2">
         <img class="mt-5" src="assets/images/paper.png" alt="news" height="72" width="72" class="d-block mb-3 mx-auto" >

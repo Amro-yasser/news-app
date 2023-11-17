@@ -16,6 +16,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { ArticleCardComponent } from './components/article-card/article-card.component';
 import { DatePipe } from '@angular/common';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,8 @@ import { DatePipe } from '@angular/common';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ArticleCardComponent
+    ArticleCardComponent,
+    SpinnerComponent
   ],
   imports: [
     HttpClientModule,
@@ -35,7 +39,8 @@ import { DatePipe } from '@angular/common';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     DatePipe
