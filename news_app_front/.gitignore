@@ -1,20 +1,3 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# vs code configuration folder
-.vscode
-
-# Django logs and debug files:
-*.log
-
-# Frontend settings
-/static
-/media/user-media
-
-debug.log
-
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
@@ -43,7 +26,6 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-!.vscode/extensions.txt
 .history/*
 
 # Miscellaneous

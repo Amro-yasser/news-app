@@ -1,5 +1,6 @@
 runapp:
-	sudo docker compose up 
+	cd news_app_backend && sudo docker compose up -d
+	cd news_app_front && ng serve
 deployprod:
 	sudo git reset --hard 
 	sudo git checkout main 
