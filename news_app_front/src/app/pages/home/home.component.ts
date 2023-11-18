@@ -28,6 +28,8 @@ export class HomeComponent {
   selectedLanguage: any = '' 
   articles: any[] = []
   page: number = 1
+  noResults: boolean = false
+  errorMessage:string = ''
   constructor(
     private newsService: NewsService
     ) {}
@@ -46,13 +48,18 @@ export class HomeComponent {
       this.page = 1
     }
 
-    this.newsService.retrieveObjects(params).subscribe((data:any)=>{
-      if(this.articles.length === 0){
-        this.articles = data
-
-      }else{
-
-        this.articles = this.articles.concat(data)
+    this.newsService.retrieveObjects(params).subscribe({
+      next: (response: any) => {
+        this.articles.length === 0 ? 
+          this.articles = response : 
+          this.articles = this.articles.concat(response)
+        
+      },
+      error: (error: any) => {
+        if(error.status == 404 || error.status == 500){
+          this.noResults = true
+          this.errorMessage = error.error.message
+        }
       }
     }).add(()=>{
 
