@@ -31,7 +31,7 @@
             <mat-chip-listbox aria-label="Fish selection"  [(ngModel)]="selectedCategory" (ngModelChange)="getArticles()" name="category">
                <!-- change color if chip is selected -->
                
-               <mat-chip-option *ngFor="let category of categories"  color="primary">{{category}}</mat-chip-option>
+               <mat-chip-option *ngFor="let category of categories" [value]="category.value"  color="primary">{{category.label}}</mat-chip-option>
             </mat-chip-listbox>
             
          </div>

@@ -15,13 +15,31 @@ export class HomeComponent {
       { label:$localize`Arabic`, code:'ar', path:'ar-AE' },
     ]
   
-  categories :string[] = [
-    $localize`business`,
-    $localize`entertainment`,
-    $localize`health`,
-    $localize`science`, 
-    $localize`sports`, 
-    $localize`technology`
+  categories = [
+    {
+      label:$localize`business`,
+      value:'business'
+    },
+    {
+      label:$localize`entertainment`,
+      value:'entertainment'
+    },
+    {
+      label:$localize`health`,
+      value:'health'
+    },
+    {
+      label:$localize`science`,
+      value:'science'
+    },
+    {
+      label:$localize`sports`,
+      value:'sports'
+    },
+    {
+      label:$localize`technology`,
+      value:'technology'
+    }
   ]
   query: string = ''  
   selectedCategory: any = ''
