@@ -18,29 +18,35 @@ class NewsListView(ListAPIView):
 
             query = self.request.GET.get("q", "")
             language = self.request.GET.get("language", "en")
-            page = int(self.request.GET.get("page", ""))
-            
+            page = int(self.request.GET.get("page", ""))            
             today = datetime.date.today()
 
             search = Search.objects.filter(query=query, language=language, page=page)
-            if search.exists():
+
+            if search.exists() and search.first().date == today:
                 search = search.first()
-                if search.date != today:
-                    search.date = today
-                    search.save()
-
                 return Response(search.result)
-            else:
-                response = get_news(query=query,language=language,page=page)
-                articles = response.get("articles", [])
-                status = response.get("status", "")
-
-                if status == 'ok' and articles:
-                    Search.objects.create(query=query, language=language, page=page, result=articles, date=today)
-                    return Response(articles)
             
-                if not articles and status == 'ok':
-                    return Response({"message": "Oops! It looks like we couldn't find any results."}, status=404)
+
+            response = get_news(query=query,language=language,page=page) 
+            articles = response.get("articles", [])
+            status = response.get("status", "")
+
+            
+
+            if status == 'ok' and articles:
+
+                if search.exists() and search.first().date != today:
+                    search.date = today
+                    search.result = articles
+                    search.save()
+                else:
+                    Search.objects.create(query=query, language=language, page=page, result=articles, date=today)
+
+                return Response(articles)
+        
+            if not articles and status == 'ok':
+                return Response({"message": "Oops! It looks like we couldn't find any results."}, status=404)
            
             
         except Exception as e:
