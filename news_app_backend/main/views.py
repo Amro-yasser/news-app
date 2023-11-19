@@ -21,7 +21,7 @@ class NewsListView(ListAPIView):
         }, {
             "code": 500,
             "en":"Oops! It looks something went wrong.",
-            "ar":"عفوا! يبدو أن شيئا ما حدث خطأ.",
+            "ar":"عفوا! يبدو أن خطأ ما قد حدث.",
         }]
         try:
 
