@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="6849949185230681399" datatype="html">
+        <source>Type a word</source>
+        <target>اكتب كلمة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="arabicPlaceholder" datatype="html">
+        <source>Ex. Apple, Netflix, Microsoft</source>
+        <target>مثال: أبل، نتفليكس، مايكروسوفت</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="487077452159084336" datatype="html">
+        <source>Select Language</source>
+        <target>اختر اللغة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5311528402610524112" datatype="html">
+        <source>Select Theme</source>
+        <target>اختر الموضوع</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4580988005648117665" datatype="html">
+        <source>Search</source>
+        <target>بحث</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6623120748454856433" datatype="html">
+        <source>Empower Your Understanding: Uncover the World&apos;s Stories </source>
+        <target>قم بتمكين فهمك: اكتشف قصص العالم</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6173606771821965643" datatype="html">
+        <source> Search for news articles from over 30,000 news sources and blogs </source>
+        <target>ابحث عن مقالات الأخبار من أكثر من 30،000 مصدر أخبار ومدونات</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1789783897589920428" datatype="html">
+        <source>Topic Variety</source>
+        <target>مواضيع متنوعة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7594933465734298070" datatype="html">
+        <source> Discover the world&apos;s stories at your fingertips with our curated news platform. </source>
+        <target>اكتشف قصص العالم بلمسة واحدة من خلال منصة الأخبار المختارة لدينا.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">50,53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2208575201839939239" datatype="html">
+        <source>Instant Updates</source>
+        <target>أحداث فورية</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7048709774653283563" datatype="html">
+        <source> Stay informed, stay inspired – where every headline tells a story </source>
+        <target>ابق على اطلاع، وابق مستوحى - حيث كل عنوان يحكي قصة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">64,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4787260409970973563" datatype="html">
+        <source>Personalized Experience</source>
+        <target>تجربة شخصية</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2875124414368441079" datatype="html">
+        <source> Elevate your news experience with personalized updates that matter to you </source>
+        <target>قم بتعزيز تجربتك في الأخبار مع التحديثات الشخصية التي تهمك</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8702263728018905093" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{errorMessage}}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Don&apos;t worry, you can try searching with different keywords or check back later.</source>
+        <target><x id="INTERPOLATION" equiv-text="{{errorMessage}}"/><x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> لا تقلق، يمكنك محاولة البحث باستخدام كلمات مفتاحية مختلفة أو التحقق مرة أخرى لاحقًا.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5866254605255506989" datatype="html">
+        <source>English</source>
+        <target>الإنجليزية</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6269202464699193298" datatype="html">
+        <source>Arabic</source>
+        <target>العربية</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2507063513175362648" datatype="html">
+        <source>business</source>
+        <target>أعمال</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3952262187987764547" datatype="html">
+        <source>entertainment</source>
+        <target>ترفيه</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4398319084395770130" datatype="html">
+        <source>general</source>
+        <target>عام</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3283299829454889645" datatype="html">
+        <source>health</source>
+        <target>صحة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2013464814082105353" datatype="html">
+        <source>science</source>
+        <target>علوم</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="765198381811706938" datatype="html">
+        <source>sports</source>
+        <target>رياضة</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6175300314360976778" datatype="html">
+        <source>technology</source>
+        <target>تكنولوجيا</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

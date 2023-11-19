@@ -1,24 +1,30 @@
 <div class="container mt-5">
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" >
         <form ngNativeValidate (submit)="getArticles()" class="search-form">
-            <mat-form-field  appearance="outline">
-            <mat-label>Type a word</mat-label>
-            <input [(ngModel)]="query" name="query" type="search" matInput #input placeholder="Ex. Apple, Netflix, Microsoft" required>
+            <mat-form-field appearance="outline">
+            <mat-label i18n>Type a word</mat-label>
+            <input 
+               [(ngModel)]="query" 
+               name="query" 
+               type="search" 
+               matInput #input 
+               placeholder="Ex. Apple, Netflix, Microsoft" 
+               i18n-placeholder="@@arabicPlaceholder" required>
             </mat-form-field>
         
             <mat-form-field appearance="outline">
-            <mat-label>Select Language</mat-label>
-            <mat-select [(value)]="selectedLanguage">
+            <mat-label i18n>Select Language</mat-label>
+            <mat-select (valueChange)="changeLanguage($event)" >
                 <mat-option *ngFor="let language of languages" [value]="language.code" name="language">{{language.label}}</mat-option>
             </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline">
-                <mat-label>Select Theme</mat-label>
+                <mat-label i18n>Select Theme</mat-label>
                 <mat-select [(value)]="selectedTheme">
                 <mat-option  *ngFor="let theme of themes" [value]="theme" name="theme">{{theme}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <button class="search-submit-btn" type="submit" mat-flat-button color="primary">Search</button>
+            <button class="search-submit-btn" type="submit" mat-flat-button color="primary" i18n>Search</button>
         </form>
     </div>
 
@@ -27,9 +33,9 @@
    
     <div *ngIf="articles.length === 0 && !loading && !noResults" class="mt-10 text-center mt-6 text-center  pb-4 px-4 pt-2">
         <img class="mt-5" src="assets/images/paper.png" alt="news" height="72" width="72" class="d-block mb-3 mx-auto" >
-        <h1 class="mt-5 fs-1 fw-bold text-center text-success" >Empower Your Understanding: Uncover the World's Stories </h1>
+        <h1 class="mt-5 fs-1 fw-bold text-center text-success" i18n>Empower Your Understanding: Uncover the World's Stories </h1>
 
-        <p class="text-center fs-3 mb-6 text-gray-600">
+        <p class="text-center fs-3 mb-6 text-gray-600" i18n>
             Search for news articles from over 30,000 news sources and blogs
         </p>
         <div class="row text-center mt-5">
@@ -40,8 +46,8 @@
                     <p class="text-center"><img width="64px" height="64px" alt="inspirassion features" src="assets/images/feat2.png" />
                     </p>
                  </div>
-                 <h5 class="fs-4 fw-bold text-gray-800">Topic Variety</h5>
-                 <p class="mb-0 fs-4 text-gray-600">
+                 <h5 class="fs-4 fw-bold text-gray-800" i18n>Topic Variety</h5>
+                 <p class="mb-0 fs-4 text-gray-600" i18n>
                     Discover the world's stories at your fingertips with our curated news platform.
                     
                  </p>
@@ -54,8 +60,8 @@
                     <p class="text-center"><img width="64px" height="64px" alt="inspirassion features" src="assets/images/feat1.png" />
                     </p>
                  </div>
-                 <h5 class="fs-4 fw-bold text-gray-800">Instant Updates</h5>
-                 <p class="mb-0 fs-4 text-gray-600">
+                 <h5 class="fs-4 fw-bold text-gray-800" i18n>Instant Updates</h5>
+                 <p class="mb-0 fs-4 text-gray-600" i18n>
                     Stay informed, stay inspired – where every headline tells a story
                  </p>
               </div>
@@ -67,8 +73,8 @@
                     <p class="text-center"><img width="64px" height="64px" alt="inspirassion features" src="assets/images/feat3.png" />
                     </p>
                  </div>
-                 <h5 class="fs-4 fw-bold text-gray-800">Personalized Experience</h5>
-                 <p class="mb-0 fs-4 text-gray-600">
+                 <h5 class="fs-4 fw-bold text-gray-800" i18n>Personalized Experience</h5>
+                 <p class="mb-0 fs-4 text-gray-600" i18n>
                     Elevate your news experience with personalized updates that matter to you
                  </p>
               </div>
@@ -79,12 +85,14 @@
 
      <div *ngIf="noResults" class="mt-10 text-center mt-6 text-center  pb-4 px-4 pt-2">
         <img src="assets/images/no-result.png" height="200" width="200" alt="">
-        <p class="mt-5 fs-4 fw-bold text-center text-success" >{{errorMessage}}<br> Don't worry, you can try searching with different keywords or check back later.</p>
+        <p class="mt-5 fs-4 fw-bold text-center text-success" i18n>{{errorMessage}}<br> Don't worry, you can try searching with different keywords or check back later.</p>
      </div>
 
     <div 
+      *ngIf="articles.length > 0"
         class="row" 
         id="results" 
+      
         (scrolled)="nextPage()"
             infiniteScroll
             [infiniteScrollDistance]="1"

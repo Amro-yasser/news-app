@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -8,20 +9,20 @@ import { NewsService } from 'src/app/services/news.service';
   
 })
 export class HomeComponent {
-  loading: boolean = false
-  languages: { label: string; code: string }[] = [
-      {label:'English',code:'en'},
-      { label:'Arabic', code:'ar'}
+  loading = false
+  languages = [
+      {label:$localize`English`,code:'en', path:'en-US'},
+      { label:$localize`Arabic`, code:'ar', path:'ar-AE' },
     ]
   
   themes :string[] = [
-    'business',
-    'entertainment',
-    'general',
-    'health',
-    'science', 
-    'sports', 
-    'technology'
+    $localize`business`,
+    $localize`entertainment`,
+    $localize`general`,
+    $localize`health`,
+    $localize`science`, 
+    $localize`sports`, 
+    $localize`technology`
   ]
   query: string = ''  
   selectedTheme: any = ''
@@ -30,33 +31,44 @@ export class HomeComponent {
   page: number = 1
   noResults: boolean = false
   errorMessage:string = ''
-  constructor(
-    private newsService: NewsService
-    ) {}
+  previousParams: object = {}
+
+  constructor( 
+    @Inject(LOCALE_ID) private locale: string,
+    private newsService: NewsService,
+    private route: ActivatedRoute,
+    private router: Router,
+      ) {
+        console.log('locale:',locale.split('-')[0])
+      }
+  changeLanguage(event: any){
+    let path = this.languages.find((language)=> language.code == event)?.path
+    let url = this.router.createUrlTree([path])
+    window.location.replace(url.toString())
+  }
 
   getArticles(){
     this.loading = true
-    console.log('scrolling',this.page)
-
     let params = {
       q:this.query,
-      language:this.selectedLanguage,
+      language:this.locale.split('-')[0],
       page:this.page,
     }
 
-    if(this.articles.length === 0 ){
+    if(this.previousParams !== params ){
       this.page = 1
     }
 
     this.newsService.retrieveObjects(params).subscribe({
       next: (response: any) => {
-        this.articles.length === 0 ? 
+        this.previousParams !== params && this.page == 1 ? 
           this.articles = response : 
           this.articles = this.articles.concat(response)
         
       },
       error: (error: any) => {
-        if(error.status == 404 || error.status == 500){
+        if(error.status == 404 && this.articles.length == 0 || error.status == 500){
+          
           this.noResults = true
           this.errorMessage = error.error.message
         }
@@ -64,6 +76,7 @@ export class HomeComponent {
     }).add(()=>{
 
       this.loading = false
+      this.previousParams = params
 
     })
   }
