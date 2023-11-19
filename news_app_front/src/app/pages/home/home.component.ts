@@ -61,11 +61,9 @@ export class HomeComponent {
       params.category= this.selectedCategory
     }
 
-    if(this.previousParams !== params ){
-      this.page = 1
-     
-    }
+
     if(this.previousParams.q !== params.q || this.previousParams.category !== params.category){
+      this.page = 1
       this.articles = []
     }
 
