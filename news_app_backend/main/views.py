@@ -18,17 +18,20 @@ class NewsListView(ListAPIView):
 
             query = self.request.GET.get("q", "")
             language = self.request.GET.get("language", "en")
-            page = int(self.request.GET.get("page", ""))            
+            page = int(self.request.GET.get("page", ""))
+            category = self.request.GET.get("category", "")
             today = datetime.date.today()
 
-            search = Search.objects.filter(query=query, language=language, page=page)
+            search = Search.objects.filter(query=query, language=language, page=page,category=category)
 
             if search.exists() and search.first().date == today:
                 search = search.first()
                 return Response(search.result)
             
 
-            response = get_news(query=query,language=language,page=page) 
+            response = get_news(query=query,language=language,page=page) if \
+                  not category else \
+                      get_top_headlines(query=query,language=language,category=category,page=page)
             articles = response.get("articles", [])
             status = response.get("status", "")
 

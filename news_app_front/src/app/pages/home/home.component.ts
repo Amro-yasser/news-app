@@ -15,32 +15,33 @@ export class HomeComponent {
       { label:$localize`Arabic`, code:'ar', path:'ar-AE' },
     ]
   
-  themes :string[] = [
+  categories :string[] = [
     $localize`business`,
     $localize`entertainment`,
-    $localize`general`,
     $localize`health`,
     $localize`science`, 
     $localize`sports`, 
     $localize`technology`
   ]
   query: string = ''  
-  selectedTheme: any = ''
+  selectedCategory: any = ''
   selectedLanguage: any = '' 
   articles: any[] = []
   page: number = 1
   noResults: boolean = false
   errorMessage:string = ''
-  previousParams: object = {}
+  previousParams: any = {}
 
   constructor( 
     @Inject(LOCALE_ID) private locale: string,
     private newsService: NewsService,
     private route: ActivatedRoute,
     private router: Router,
-      ) {
-        console.log('locale:',locale.split('-')[0])
-      }
+      ) {}
+
+  ngOnInit(): void {
+    this.selectedLanguage = this.languages.find((language)=> language.code == this.locale.split('-')[0])?.code
+  }
   changeLanguage(event: any){
     let path = this.languages.find((language)=> language.code == event)?.path
     let url = this.router.createUrlTree([path])
@@ -49,14 +50,23 @@ export class HomeComponent {
 
   getArticles(){
     this.loading = true
-    let params = {
+
+    let params: any = {
       q:this.query,
       language:this.locale.split('-')[0],
       page:this.page,
     }
 
+    if(this.selectedCategory){
+      params.category= this.selectedCategory
+    }
+
     if(this.previousParams !== params ){
       this.page = 1
+     
+    }
+    if(this.previousParams.q !== params.q || this.previousParams.category !== params.category){
+      this.articles = []
     }
 
     this.newsService.retrieveObjects(params).subscribe({
@@ -71,6 +81,7 @@ export class HomeComponent {
           
           this.noResults = true
           this.errorMessage = error.error.message
+          this.articles = []
         }
       }
     }).add(()=>{

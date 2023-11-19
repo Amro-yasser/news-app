@@ -19,6 +19,8 @@ import { DatePipe } from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatChipsModule,
+    MatButtonToggleModule
   ],
   providers: [
     DatePipe

@@ -8,11 +8,13 @@ import re
 
 newsapi = NewsApiClient(api_key=os.getenv('API_KEY'))
 
-def get_top_headlines(query,language,country,category):
-    top_headlines = newsapi.get_top_headlines(q=query,
-                                          category=category,
-                                          language=language,
-                                          country=country)
+def get_top_headlines(query,language,category,page):
+    top_headlines = newsapi.get_top_headlines(
+                                        q=query,
+                                        category=category,
+                                        language=language,
+                                        page=page
+                                        )
     return top_headlines
 
 # /v2/everything
@@ -24,12 +26,12 @@ def get_news(query,language='en',page=1):
     seven_days_before = seven_days_before.strftime("%Y-%m-%d")
 
     all_articles = newsapi.get_everything(q=query,
-                                      from_param=seven_days_before,
-                                      to=today  ,
-                                      language=language,
-                                      sort_by='publishedAt',
-                                      page=page
-                                      )
+                                    from_param=seven_days_before,
+                                    to=today  ,
+                                    language=language,
+                                    sort_by='publishedAt',
+                                    page=page,
+                                    )
     return all_articles
 
 
