@@ -3,13 +3,12 @@ setup:
 	sudo apt install -y nodejs
 	sudo npm install -g @angular/cli
 	sudo npm install -g http-server
+	cd news_app_front && npm install
 
-build:
-	cd news_app_front && ng build --localize 
-
+rundev:
+	cd news_app_backend && sudo docker compose up -d
+	cd news_app_front && ng serve 
 
 runapp:
-    @build
-	cd news_app_backend && sudo docker compose up -d
-	cd news_app_front/dist/news_app_front http-server -p 4000 -o en-us
+	cd news_app_backend && sudo docker compose up  -d && cd ../news_app_front && ng build --localize && cd dist/news_app_front && http-server -p 4000 -o en-US
 
