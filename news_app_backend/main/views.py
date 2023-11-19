@@ -49,6 +49,7 @@ class NewsListView(ListAPIView):
             if status == 'ok' and articles:
 
                 if search.exists() and search.first().date != today:
+                    search = search.first()
                     search.date = today
                     search.result = articles
                     search.save()
