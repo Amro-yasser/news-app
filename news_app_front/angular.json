@@ -4,6 +4,17 @@
   "newProjectRoot": "projects",
   "projects": {
     "news_app_front": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "ar-AE":{
+            "translation": "src/locale/messages.ar.xlf",
+            "baseHref": "ar-AE/"
+          }
+          
+
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +28,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize":["ar-AE"],
             "outputPath": "dist/news_app_front",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -41,7 +53,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
