@@ -1,11 +1,15 @@
+setup:
+	sudo apt update
+	sudo apt install -y nodejs
+	sudo npm install -g @angular/cli
+	sudo npm install -g http-server
+
+build:
+	cd news_app_front && ng build --localize 
+
+
 runapp:
+    @build
 	cd news_app_backend && sudo docker compose up -d
-	cd news_app_front && ng serve
-deployprod:
-	sudo git reset --hard 
-	sudo git checkout main 
-	sudo git pull origin main
-	sudo docker-compose -f docker-compose-prod.yml build 
-	sudo docker-compose -f docker-compose-prod.yml up -d 
-	sudo docker-compose -f docker-compose-prod.yml exec newsapp-prod-api python manage.py collectstatic --clear --no-input && sudo docker-compose -f docker-compose-prod.yml exec newsapp-prod-api python manage.py showmigrations 
-	sudo docker-compose -f docker-compose-prod.yml exec newsapp-prod-api python manage.py migrate;		
+	cd news_app_front/dist/news_app_front http-server -p 4000 -o en-us
+
