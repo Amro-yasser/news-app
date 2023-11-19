@@ -14,6 +14,15 @@ class NewsListView(ListAPIView):
         return [] 
      
      def list(self, request, *args, **kwargs):
+        error_messages = [{
+            "code": 404,
+            "en":"Oops! It looks like we couldn't find any results.",
+            "ar":"عفوا! لا يمكننا العثور على أي نتائج.",
+        }, {
+            "code": 500,
+            "en":"Oops! It looks something went wrong.",
+            "ar":"عفوا! يبدو أن شيئا ما حدث خطأ.",
+        }]
         try:
 
             query = self.request.GET.get("q", "")
@@ -49,10 +58,12 @@ class NewsListView(ListAPIView):
                 return Response(articles)
         
             if not articles and status == 'ok':
-                return Response({"message": "Oops! It looks like we couldn't find any results."}, status=404)
+                # return response with message from error_message array
+
+                return Response({"message": error_messages[0][language]}, status=404)
            
             
         except Exception as e:
             logging.error("An error occurred: %s", e, exc_info=True)
-            return Response({"message": "Oops! It looks something went wrong."}, status=500)
+            return Response({"message": error_messages[1][language]}, status=500)
     
