@@ -12,6 +12,8 @@ Make sure you have the following installed on your machine:
 - [Angular CLI](https://cli.angular.io/)
 - [Http-Server](https://www.npmjs.com/package/http-server)
 
+#### it is better to install prerequisites manually in case of dependencies missmatch
+
 ## Getting Started
 
 1. Clone the repository to your local machine:
