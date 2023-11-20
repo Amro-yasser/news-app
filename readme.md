@@ -19,7 +19,7 @@ Make sure you have the following installed on your machine:
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://gitlab.com/Amro-yasser/news_app.git
+   git clone https://github.com/Amro-yasser/news-app.git
    cd news-app
     ```
 2. Launch the application using this command:
