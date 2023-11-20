@@ -3,7 +3,7 @@ setup:
 	sudo apt install -y nodejs
 	sudo npm install -g @angular/cli
 	sudo npm install -g http-server
-	cd news_app_front && npm install
+	cd news_app_front && sudo npm install
 
 rundev:
 	cd news_app_backend && sudo docker compose up -d
